@@ -1,23 +1,18 @@
-version: "3"
+version: '2.4'
 
 services:
-  api:
-    container_name: contacts_ms
-    restart: on-failure
-    build: .
+  app:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "3030:80"
+      - "9229:9229"
     volumes:
-      - ./contacts_ms:/app
-    ports:
-      - "7777:7777"
-    command: >
-      sh -c "yarn start:dev"
-  mysql:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: contacts_db
-      MYSQL_USER: contacts
-      MYSQL_PASSWORD: 2021
-    ports:
-      - "3308:3308"
+      - .:/app
+  mongo:
+      image: mongo
+      volumes:
+        - ./mongodb/data/db
+      ports:
+        - '27017:27017'

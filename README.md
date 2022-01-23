@@ -32,8 +32,7 @@ json:
 }
 
 
-Consultar distancias: http://localhost:3030/register
+Consultar distancias: http://localhost:3030/members
 Método: Get
-
 
 
