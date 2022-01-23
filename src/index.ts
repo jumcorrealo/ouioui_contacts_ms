@@ -22,7 +22,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 app.use(express.json());
-app.use("/members", register);
+/* app.use("/members" ); */
 
 
 require("dotenv").config();
@@ -35,17 +35,20 @@ require("dotenv").config();
   });
 
   app.get("/members", async (req: Request, res: Response) => {
+    const {longitude, latitude } = req.body;
     const members = await Member.find().select("longitude latitude");
     /* create a empty array */ 
     const distances = [1];
     members.forEach(member => {
       const member_longitude = member.longitude;
       const member_latitude = member.latitude;
+      const user_latitude = latitude;
+      const user_longitude = longitude;
       /* calculate distance from member to user */
 /*       const user_latitude = req.query.latitude;
       const user_longitude = req.query.longitude; */
-      const user_longitude = 0.13;
-      const user_latitude = 51.51;
+     /*  const user_longitude = 0.13;
+      const user_latitude = 51.51; */
       const distance = Math.sqrt( Math.pow(user_longitude - member_longitude, 2) + Math.pow(user_latitude - member_latitude, 2) );
       console.log(distance);
       /* add distance to distances array */

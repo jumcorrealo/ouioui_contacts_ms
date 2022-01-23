@@ -34,5 +34,10 @@ json:
 
 Consultar distancias: http://localhost:3030/members
 Método: Get
+json:
+{
+    "longitude": 50.1234,
+    "latitude": 1
+}
 
 
