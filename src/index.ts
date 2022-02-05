@@ -19,7 +19,8 @@ const allowedOrigins = ["http://localhost:20000", "http://localhost:20001"];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
-
+/* hola mundo */
+/* open ssl */
 app.use(cors(options));
 app.use(express.json());
 /* app.use("/members" ); */
